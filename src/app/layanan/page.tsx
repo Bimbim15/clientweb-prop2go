@@ -2,7 +2,7 @@
 import { Navbar } from "@/components/navbar";
 import { Lora } from "next/font/google";
 import { useEffect, useState } from "react";
-import { ChevronRight, Gavel } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 const lora = Lora({
   subsets: ["latin"],
@@ -99,8 +99,8 @@ export default function LayananPage() {
         </h2>
         <div className="block sm:hidden">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Card 3: Jual AJB */}
-            <div className="bg-black p-6 rounded-lg flex flex-col items-center">
+            {/* Card 1: Lelang */}
+            <div className=" p-6 rounded-lg flex flex-col items-center">
               <div className="mb-4">
                 <svg
                   className="w-12 h-12 text-yellow-400"
