@@ -28,7 +28,7 @@ export default function LayananPage() {
     if (detailSection) {
       detailSection.scrollIntoView({
         behavior: "smooth",
-        block: "start", // Align at the top
+        block: "start",
       });
     }
   };
@@ -254,6 +254,72 @@ export default function LayananPage() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="container mx-auto px-6 py-10 md:px-3 md:py-20">
+          <div className="flex flex-col md:flex-row justify-center">
+            {/* Left Side: Text */}
+            <div className="w-full md:w-1/2 flex flex-col px-6 text-center md:text-start space-y-2 md:justify-center">
+              <h2 className="text-xl md:text-xl font-semibold mb-4 flex items-center">
+                <span className="w-1 h-16 bg-yellow-400 mr-4"></span>
+                Lelang Properti adalah Keunggulan kami dalam upaya memberikan
+                properti impian anda dengan keuntungan maksimal.
+              </h2>
+              <p className="text-sm md:text-md font-medium mb-6 md:max-w-3xl mx-auto">
+                Melalui lelang eksklusif kami, Anda bisa menemukan rumah atau
+                investasi terbaik dengan potensi keuntungan besar. Setiap
+                langkah dibimbing oleh tim profesional kami, memastikan proses
+                lelang yang transparan dan nyaman. Jangan lewatkan peluang
+                istimewa ini untuk berinvestasi cerdas dan hemat bersama kami
+              </p>
+            </div>
+
+            {/* Right Side: Image */}
+            <div className="md:w-1/2 md:flex items-center justify-center md:justify-end mb-6 md:mb-0">
+              <img
+                src="https://raw.githubusercontent.com/Bimbim15/lolhuman/065d51a31ae68d0651ddb96f2c2d62bc1e4b9b38/css/lelang%201.png"
+                alt="Why Choose Us Image"
+                className="w-full md:w-[100vh] h-auto object-cover shadow-lg "
+              />
+            </div>
+          </div>
+        </div>
+        <div className="container mx-auto px-6 py-10 md:px-3 md:py-20">
+          <div className="flex flex-col md:flex-row justify-center">
+            {/* Right Side: Image */}
+            <div className="hidden md:w-1/2 md:flex items-center justify-center md:justify-end mb-6 md:mb-0">
+              <img
+                src="https://raw.githubusercontent.com/Bimbim15/lolhuman/065d51a31ae68d0651ddb96f2c2d62bc1e4b9b38/css/sale%201.png"
+                alt="Why Choose Us Image"
+                className="w-full md:w-[100vh] h-auto object-cover shadow-lg "
+              />
+            </div>
+            {/* Left Side: Text */}
+            <div className="w-full md:w-1/2 flex flex-col px-6 text-center md:text-start space-y-2 md:justify-center">
+              <h2 className="text-xl md:text-xl font-semibold mb-4 flex items-center">
+                <span className="w-1 h-10 md:h-6 bg-yellow-400 mr-4"></span>
+                Titip Jual dan Sewa Properti bersama AssetHub
+              </h2>
+              <p className="text-sm md:text-md font-medium mb-6 md:max-w-3xl mx-auto">
+                Kami memiliki jaringan yang luas, disertai dengan penetrasi
+                pasar yang maksimal dan didukung oleh para profesional yang siap
+                membantu transaksi jual dan sewa anda sampai dengan tuntas
+              </p>
+            </div>
+            {/* Mobile view */}
+            <div className="  items-center justify-center  mb-6 md:hidden">
+              <img
+                src="https://raw.githubusercontent.com/Bimbim15/lolhuman/065d51a31ae68d0651ddb96f2c2d62bc1e4b9b38/css/sale%201.png"
+                alt="Why Choose Us Image"
+                className="w-full md:w-[100vh] h-auto object-cover shadow-lg "
+              />
+            </div>
+          </div>
+        </div>
+        <div className="container mx-auto px-6 py-10 md:px-3 md:py-1">
+          <h2 className="italic text-3xl md:text-3xl text-center font-semibold mb-8 flex">
+            <span className="w-1 h-8 bg-yellow-400 mr-4"></span>History
+            transaksi kami dalam angka:
+          </h2>
         </div>
       </section>
     </main>
