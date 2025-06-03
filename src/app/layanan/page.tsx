@@ -100,57 +100,85 @@ export default function LayananPage() {
         <div className="block sm:hidden">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Card 1: Lelang */}
-            <div className=" p-6 rounded-lg flex flex-col items-center">
+            <div
+              className=" p-6 rounded-lg flex flex-col items-center cursor-pointer shadow-xl border border-black dark:border-white transition-all duration-300 relative"
+              onClick={() => alert("Card Lelang clicked")}
+            >
               <div className="mb-4">
-                <svg
-                  className="w-12 h-12 text-yellow-400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 9v12m-7-7h14"
-                  />
-                </svg>
+                <img
+                  src="https://github.com/Bimbim15/lolhuman/blob/master/css/Vector%20(3).png?raw=true"
+                  alt="Gavel Icon"
+                  className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain" // Smaller size on mobile
+                />
+              </div>
+              <h3 className="text-xl font-semibold">Lelang</h3>
+
+              <div className="mt-4">
+                <ChevronRight className="w-8 h-8 sm:w-10 sm:h-10" />{" "}
+              </div>
+            </div>
+
+            {/* Card 2: Cessie */}
+            <div
+              className=" p-6 rounded-lg flex flex-col items-center cursor-pointer shadow-xl border border-black dark:border-white transition-all duration-300 relative"
+              onClick={() => alert("Card Cessie clicked")}
+            >
+              <div className="mb-4">
+                <img
+                  src="https://github.com/Bimbim15/lolhuman/blob/master/css/Vector%20(2).png?raw=true"
+                  alt="Gavel Icon"
+                  className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain" // Smaller size on mobile
+                />
+              </div>
+              <h3 className="text-xl font-semibold">Cessie</h3>
+
+              <div className="mt-4">
+                <ChevronRight className="w-8 h-8 sm:w-10 sm:h-10" />{" "}
+              </div>
+            </div>
+            {/* Card 3: Jual AJB */}
+            <div
+              className=" p-6 rounded-lg flex flex-col items-center cursor-pointer shadow-xl border border-black dark:border-white transition-all duration-300 relative"
+              onClick={() => alert("Card Cessie clicked")}
+            >
+              <div className="mb-4">
+                <img
+                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/f051a7d889dc64aab1fb760a081ec3ebba6e852c/css/Group%2054.png"
+                  alt="Gavel Icon"
+                  className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain" // Smaller size on mobile
+                />
               </div>
               <h3 className="text-xl font-semibold">Jual AJB</h3>
 
-              <div className="mt-4 text-yellow-400">→</div>
+              <div className="mt-4">
+                <ChevronRight className="w-8 h-8 sm:w-10 sm:h-10" />{" "}
+              </div>
             </div>
-
             {/* Card 4: Sewa */}
-            <div className="bg-black p-6 rounded-lg flex flex-col items-center">
+            <div
+              className=" p-6 rounded-lg flex flex-col items-center cursor-pointer shadow-xl border border-black dark:border-white transition-all duration-300 relative"
+              onClick={() => alert("Card Cessie clicked")}
+            >
               <div className="mb-4">
-                <svg
-                  className="w-12 h-12 text-yellow-400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 11v2M5 11v2m7 7v2m-7-4v-2m14 0V9m-7-7v2m7 3V2"
-                  />
-                </svg>
+                <img
+                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/f051a7d889dc64aab1fb760a081ec3ebba6e852c/css/Vector%20(4).png"
+                  alt="Gavel Icon"
+                  className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain"
+                />
               </div>
               <h3 className="text-xl font-semibold">Sewa</h3>
 
-              <div className="mt-4 text-yellow-400">→</div>
+              <div className="mt-4">
+                <ChevronRight className="w-8 h-8 sm:w-10 sm:h-10" />{" "}
+              </div>
             </div>
           </div>
         </div>
         <div className="hidden sm:block">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {/* Card 1: Lelang */}
             <div
-              className="cursor-pointer shadow-xl border border-black dark:border-white rounded-md flex flex-col items-center transition-all duration-300 relative"
+              className="bg-black text-white cursor-pointer shadow-xl border border-black dark:border-white rounded-md flex flex-col items-center transition-all duration-300 relative"
               onClick={() => alert("Card Lelang clicked")} // Placeholder for the click action
             >
               {/* Image - Positioned Top Left, Adjusted for Mobile */}
@@ -158,84 +186,72 @@ export default function LayananPage() {
                 <img
                   src="https://github.com/Bimbim15/lolhuman/blob/master/css/Vector%20(3).png?raw=true"
                   alt="Gavel Icon"
-                  className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain" // Smaller size on mobile
+                  className="w-12 h-12 sm:w-14 sm:h-14 md:w-13 md:h-13 object-contain" // Smaller size on mobile
                 />
               </div>
 
               {/* Text "Lelang" - Centered Below the Image */}
-              <h3 className="text-xl sm:text-2xl font-semibold absolute bottom-10 left-0 right-0 text-center">
-                Lelang
-              </h3>
+              <h3 className="text-xl sm:text-xl font-semibold mt-20">Lelang</h3>
 
               {/* Chevron Icon - Positioned Bottom Right */}
-              <div className="absolute bottom-4 right-4">
-                <ChevronRight className="w-8 h-8 sm:w-10 sm:h-10" />{" "}
+              <div className="absolute text-center mt-14 right-4">
+                <ChevronRight className="w-8 h-8 sm:w-8 sm:h-8" />{" "}
                 {/* Adjusted size for mobile */}
               </div>
             </div>
 
             {/* Card 2: Cessie */}
             <div
-              className="cursor-pointer shadow-xl border border-black dark:border-white rounded-md flex flex-col items-center transition-all duration-300 relative"
+              className="bg-black text-white cursor-pointer shadow-xl border border-black dark:border-white rounded-md flex flex-col items-center transition-all duration-300 relative"
               onClick={() => alert("Card Lelang clicked")} // Placeholder for the click action
             >
               <div className="absolute top-4 left-4">
                 <img
                   src="https://github.com/Bimbim15/lolhuman/blob/master/css/Vector%20(2).png?raw=true"
                   alt="Gavel Icon"
-                  className="w-16 h-16 object-contain" // Set appropriate size for the image
+                  className="w-13 h-13 object-contain" // Set appropriate size for the image
                 />
               </div>
-              <h3 className="text-2xl font-semibold absolute mt-30">Cessie</h3>{" "}
+              <h3 className="text-xl font-semibold absolute mt-20">Cessie</h3>{" "}
               <div className="absolute text-center mt-14 right-4">
-                <ChevronRight className="w-10 h-10" />
+                <ChevronRight className="w-8 h-8" />
               </div>
             </div>
 
             {/* Card 3: Jual AJB */}
-            <div className="bg-black p-6 rounded-lg flex flex-col items-center">
-              <div className="mb-4">
-                <svg
-                  className="w-12 h-12 text-yellow-400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 9v12m-7-7h14"
-                  />
-                </svg>
+            <div
+              className="bg-black text-white cursor-pointer shadow-xl border border-black dark:border-white rounded-md flex flex-col items-center transition-all duration-300 relative"
+              onClick={() => alert("Card Lelang clicked")} // Placeholder for the click action
+            >
+              <div className="absolute top-4 left-4">
+                <img
+                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/f051a7d889dc64aab1fb760a081ec3ebba6e852c/css/Group%2054.png"
+                  alt="Gavel Icon"
+                  className="w-13 h-13 object-contain" // Set appropriate size for the image
+                />
               </div>
-              <h3 className="text-xl font-semibold">Jual AJB</h3>
-
-              <div className="mt-4 text-yellow-400">→</div>
+              <h3 className="text-xl font-semibold absolute mt-20">Jual AJB</h3>{" "}
+              <div className="absolute text-center mt-14 right-4">
+                <ChevronRight className="w-8 h-8" />
+              </div>
             </div>
 
             {/* Card 4: Sewa */}
-            <div className="bg-black p-6 rounded-lg flex flex-col items-center">
-              <div className="mb-4">
-                <svg
-                  className="w-12 h-12 text-yellow-400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 11v2M5 11v2m7 7v2m-7-4v-2m14 0V9m-7-7v2m7 3V2"
-                  />
-                </svg>
+            <div
+              className="bg-black text-white cursor-pointer shadow-xl border border-black dark:border-white rounded-md flex flex-col items-center transition-all duration-300 relative"
+              onClick={() => alert("Card Lelang clicked")} // Placeholder for the click action
+            >
+              <div className="absolute top-4 left-4">
+                <img
+                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/f051a7d889dc64aab1fb760a081ec3ebba6e852c/css/Vector%20(4).png"
+                  alt="Gavel Icon"
+                  className="w-13 h-13 object-contain" // Set appropriate size for the image
+                />
               </div>
-              <h3 className="text-xl font-semibold">Sewa</h3>
-
-              <div className="mt-4 text-yellow-400">→</div>
+              <h3 className="text-xl font-semibold absolute mt-20">Sewa</h3>{" "}
+              <div className="absolute text-center mt-14 right-4">
+                <ChevronRight className="w-8 h-8" />
+              </div>
             </div>
           </div>
         </div>
