@@ -3,6 +3,36 @@ import { Navbar } from "@/components/navbar";
 import { Lora } from "next/font/google";
 import { useEffect, useState } from "react";
 import { ChevronRight } from "lucide-react";
+import EmblaCarousel from "@/components/ui/EmblaCarousel";
+import { Footer } from "@/components/footer";
+
+const bankLogos = [
+  {
+    src: "https://raw.githubusercontent.com/Bimbim15/lolhuman/6f2d72694820f4b8e29ae2472aa2404eabd74acb/css/lobo%20bank2%202.png",
+    alt: "BANK BRI",
+    bgColor: "bg-cyan-300",
+  },
+  {
+    src: "https://raw.githubusercontent.com/Bimbim15/lolhuman/6f2d72694820f4b8e29ae2472aa2404eabd74acb/css/logo%20bank1%201.png",
+    alt: "OCBC",
+    bgColor: "bg-pink-300",
+  },
+  {
+    src: "https://raw.githubusercontent.com/Bimbim15/lolhuman/6f2d72694820f4b8e29ae2472aa2404eabd74acb/css/logo%20bank%201.png",
+    alt: "Mandiri",
+    bgColor: "bg-blue-200",
+  },
+  {
+    src: "https://raw.githubusercontent.com/Bimbim15/lolhuman/6f2d72694820f4b8e29ae2472aa2404eabd74acb/css/logo%20bank4%201.png",
+    alt: "OK ASSET",
+    bgColor: "bg-yellow-200",
+  },
+  {
+    src: "https://raw.githubusercontent.com/Bimbim15/lolhuman/6f2d72694820f4b8e29ae2472aa2404eabd74acb/css/Logo%20bank5%201.png",
+    alt: "J TRUST BANK",
+    bgColor: "bg-blue-100",
+  },
+];
 
 const lora = Lora({
   subsets: ["latin"],
@@ -12,6 +42,8 @@ const lora = Lora({
 
 export default function LayananPage() {
   const [scrolling, setScrolling] = useState(false);
+
+  
 
   // Detect scroll to trigger animation
   const handleScroll = () => {
@@ -320,8 +352,63 @@ export default function LayananPage() {
             <span className="w-1 h-8 bg-yellow-400 mr-4"></span>History
             transaksi kami dalam angka:
           </h2>
+          <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-6 py-3.5">
+              <div className="px-2 mb-4 sm:mb-0">
+                <h1 className="font-semibold text-3xl sm:text-4xl relative">
+                  <span className="bg-yellow-500 bg-opacity-70 rounded-lg px-1.5 py-0.5">
+                    1
+                  </span>
+                  00 M+
+                </h1>
+                <p className="mt-2 text-sm sm:text-base">
+                  Nilai transaksi lelang kami rata-rata setiap tahunnya
+                </p>
+              </div>
+              <div className="px-2 mb-4 sm:mb-0">
+                <h1 className="font-semibold text-3xl sm:text-4xl">
+                  <span className="bg-yellow-500 bg-opacity-70 rounded-lg px-1.5 py-0.5">
+                    1
+                  </span>
+                  000+ Properti
+                </h1>
+                <p className="mt-2 text-sm sm:text-base">
+                  Jumlah properti yang terjual dan tersewa rata-rata melalui
+                  lelang dengan kami setiap tahunnya
+                </p>
+              </div>
+              <div className="px-2">
+                <h1 className="font-semibold text-3xl sm:text-4xl">
+                  <span className="bg-yellow-500 bg-opacity-70 rounded-lg px-1.5 py-0.5">
+                    1
+                  </span>
+                  000+ Customer
+                </h1>
+                <p className="mt-2 text-sm sm:text-base">
+                  Dengan kemampuan tim kami yang profesional dan berpengalaman
+                  tinggi, kami berhasil melayani lebih dari 100 happy customer
+                  setiap tahunnya
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+      <section className="mx-auto container bg-white py-10">
+        <h2 className="italic text-3xl md:text-5xl text-center font-bold mt-10 flex items-center justify-center text-black py-5">
+          <span className="w-1 h-8 bg-yellow-400 mr-4"></span> Mitra Perbankan
+          Kami
+        </h2>
+        <p className="text-center font-semibold text-gray-700 mb-8">
+          Jaminan kemanan untuk setiap transaksi anda bersama kami
+        </p>
+
+        <EmblaCarousel
+          slides={bankLogos}
+          options={{ loop: true, align: "center" }}
+        />
+      </section>
+      <Footer />
     </main>
   );
 }
