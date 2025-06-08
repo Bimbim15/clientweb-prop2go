@@ -308,53 +308,6 @@ export default function ListingPage() {
           </div>
         </div>
       </div>
-
-      {/* Why Choose Us Section (No Gradient) */}
-      <div className="container mx-auto px-6 py-10 md:px-3 md:py-1">
-        <div className="flex flex-col md:flex-row justify-center">
-          {/* Left Side: Image */}
-          <div className="hidden md:w-1/2 md:flex items-center justify-center md:justify-end mb-6 md:mb-0">
-            <img
-              src="https://github.com/Bimbim15/lolhuman/blob/master/css/h61.jpg.png?raw=true"
-              alt="Why Choose Us Image"
-              className="w-full md:w-[150vh] h-auto object-cover shadow-lg "
-            />
-          </div>
-
-          {/* Right Side: Text */}
-          <div className="w-full md:w-1/2 flex flex-col px-6 md:px-10 text-center md:text-start space-y-2 md:justify-center">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-              Kenapa Anda Harus Memilih Kami!
-            </h2>
-            <p className="text-lg md:text-xl font-medium mb-6 md:max-w-3xl mx-auto">
-              Dengan tim yang memiliki pengalaman dan jam terbang yang tinggi,
-              kami akan memberikan Solusi Investasi Properti yang maksimal
-              dengan pendampingan profesional.
-            </p>
-
-            {/* Grid for Features */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              <div className="p-6 rounded-xl shadow-lg">
-                <h3 className="text-lg font-semibold mb-4">Lelang Properti</h3>
-                <p className="text-sm mb-4">
-                  Temukan pilihan aset lelang properti dengan keuntungan
-                  maksimal.
-                </p>
-              </div>
-
-              <div className="p-6 rounded-xl shadow-lg bg-white dark:bg-black">
-                <h3 className="text-lg font-semibold mb-4">
-                  Dipercaya Ribuan Customer
-                </h3>
-                <p className="text-sm mb-4">
-                  Dengan pengalaman lebih dari satu dekade, kami telah melayani
-                  ribuan customer yang happy.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </main>
   );
 }
