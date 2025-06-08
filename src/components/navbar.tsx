@@ -43,8 +43,8 @@ export function Navbar() {
             <Image
               src="https://raw.githubusercontent.com/Bimbim15/lolhuman/master/css/Mask%20group.png"
               alt="Logo"
-              width={48} // Memperbesar ukuran logo
-              height={48} // Memperbesar ukuran logo
+              width={48} 
+              height={48}
               className="object-contain"
               style={{ width: "auto", height: "auto" }}
             />
