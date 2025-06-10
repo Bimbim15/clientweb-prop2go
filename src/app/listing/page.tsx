@@ -22,43 +22,65 @@ export default function ListingPage() {
         {/* Gradasi hanya untuk Hero Section */}
         <div className="absolute inset-0 bg-gradient-to-br from-yellow-100 to-transparent opacity-30 z-0"></div>
 
-        <div className="container mx-auto px-6 py-10 md:px-3 md:py-1 relative z-10">
+        <div className="container mx-auto px-6 py-40 md:px-3 md:py-1 relative z-10">
           <div className="flex flex-col md:flex-row justify-center">
+            {/* Mobileview: Image  */}
+            <div className="w-full  flex items-center justify-center mb-2 md:hidden">
+              <div className="relative w-full h-80 md:h-auto">
+                <Image
+                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/921fbd56bbfceb893809fda8f1596649351e9417/css/Screenshot%20From%202025-06-06%2017-22-26.png"
+                  alt="Why Choose Us Image"
+                  layout="responsive"
+                  width={700}
+                  height={500}
+                  objectFit="cover"
+                  className="shadow-lg rounded-2xl"
+                />
+              </div>
+            </div>
             {/* Left Side: Content like in the screenshot */}
             <div className="w-full md:w-1/2 flex flex-col px-6 md:px-5 text-center md:text-start space-y-6 md:justify-center md:items-start">
               <h1 className="text-2xl md:text-5xl font-semibold mb-4">
                 Cari Properti? Temukan disini sekarang juga!
               </h1>
               {/* Tabs Listing Category */}
-              <div className="flex mt-10">
+              <div className="flex mt-1.5 items-center justify-center text-center md:mt-10">
                 <button
                   onClick={() => setActiveTab(1)}
-                  className={`py-2 px-1 text-lg font-semibold  ${
-                    activeTab === 1 ? "border-b-2 border-yellow-500" : ""
+                  className={`py-1 md:py-2 px-1 md:px-2 text-md md:text-lg font-semibold  ${
+                    activeTab === 1
+                      ? "border-b-1 md:border-b-2 border-yellow-500"
+                      : ""
                   }`}
                 >
                   Lelang
                 </button>
                 <button
                   onClick={() => setActiveTab(2)}
-                  className={`py-2 px-4 text-lg font-semibold  ${
-                    activeTab === 2 ? "border-b-2 border-yellow-500" : ""
+                  className={`py-1 md:py-2 px-1 md:px-2 text-md md:text-lg font-semibold ${
+                    activeTab === 2
+                      ? "border-b-1 md:border-b-2 border-yellow-500"
+                      : ""
                   }`}
                 >
                   Cessie
                 </button>
                 <button
                   onClick={() => setActiveTab(3)}
-                  className={`py-2 px-4 text-lg font-semibold  ${
-                    activeTab === 3 ? "border-b-2 border-yellow-500" : ""
+                  className={`py-1 md:py-2 px-1 md:px-2 text-md md:text-lg font-semibold  ${
+                    activeTab === 3
+                      ? "border-b-1 md:border-b-2 border-yellow-500"
+                      : ""
                   }`}
                 >
                   Jual AJB
                 </button>
                 <button
                   onClick={() => setActiveTab(4)}
-                  className={`py-2 px-4 text-lg font-semibold ${
-                    activeTab === 4 ? "border-b-2 border-yellow-500" : ""
+                  className={`py-1 md:py-2 px-1 md:px-2 text-md md:text-lg font-semibold ${
+                    activeTab === 4
+                      ? "border-b-1 md:border-b-2 border-yellow-500"
+                      : ""
                   }`}
                 >
                   Sewa
@@ -69,14 +91,8 @@ export default function ListingPage() {
                 // Search Filter Section Lelang
                 <div className="container shadow-md mx-auto w-full">
                   <form className="max-w-4xl mx-auto">
-                    <label
-                      id="default-search"
-                      className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-                    >
-                      Search
-                    </label>
                     <div className="relative flex items-center w-full">
-                      <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                      <div className="hidden md:absolute md:inset-y-0 md:start-0 md:flex md:items-center md:ps-3 md:pointer-events-none">
                         <svg
                           className="w-6 h-6 text-gray-500 dark:text-black"
                           aria-hidden="true"
@@ -96,18 +112,18 @@ export default function ListingPage() {
                       <input
                         type="search"
                         id="default-search"
-                        className="block w-full p-6 pl-14 text-md text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-amber-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="block w-full p-3 md:p-6 pl-1 md:pl-14 text-sm md:text-md rounded-lg md:rounded-none text-gray-900 border border-gray-300 bg-gray-50 f dark:bg-amber-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
                         placeholder="Rumah Dilelang Jakarta"
                         required
                       />
                       <div className="flex items-center absolute right-0 pr-4  space-x-2">
-                        <button className="bg-gray-100 text-black py-2 px-5 rounded-l-lg hover:bg-gray-200 flex items-center">
+                        <button className="bg-gray-100 text-black py-0 md:py-2 px-1 md:px-5 rounded-l-lg hover:bg-gray-200 flex items-center">
                           <span className="font-semibold text-sm">Filter</span>
                           <Settings2 className="ml-2 text-sm" size={14} />
                         </button>
                         <button
                           type="submit"
-                          className="text-black font-semibold bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-4 py-2 dark:bg-yellow-400 dark:hover:bg-yellow-500 dark:focus:ring-blue-800"
+                          className="text-black font-semibold   focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-1.5 md:px-4 py-0 md:py-2 bg-yellow-400 hover:bg-yellow-500 "
                         >
                           Cari
                         </button>
@@ -127,7 +143,7 @@ export default function ListingPage() {
                       Search
                     </label>
                     <div className="relative flex items-center w-full">
-                      <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                      <div className="hidden md:absolute md:inset-y-0 md:start-0 md:flex md:items-center md:ps-3 md:pointer-events-none">
                         <svg
                           className="w-6 h-6 text-gray-500 dark:text-black"
                           aria-hidden="true"
@@ -147,18 +163,18 @@ export default function ListingPage() {
                       <input
                         type="search"
                         id="default-search"
-                        className="block w-full p-6 pl-14 text-md text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-amber-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="block w-full p-3 md:p-6 pl-1 md:pl-14 text-sm md:text-md rounded-lg md:rounded-none text-gray-900 border border-gray-300 bg-gray-50 f dark:bg-amber-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
                         placeholder="Cessie Jakarta"
                         required
                       />
                       <div className="flex items-center absolute right-0 pr-4  space-x-2">
-                        <button className="bg-gray-100 text-black py-2 px-5 rounded-l-lg hover:bg-gray-200 flex items-center">
+                        <button className="bg-gray-100 text-black py-0 md:py-2 px-1 md:px-5 rounded-l-lg hover:bg-gray-200 flex items-center">
                           <span className="font-semibold text-sm">Filter</span>
                           <Settings2 className="ml-2 text-sm" size={14} />
                         </button>
                         <button
                           type="submit"
-                          className="text-black font-semibold bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-4 py-2 dark:bg-yellow-400 dark:hover:bg-yellow-500 dark:focus:ring-blue-800"
+                          className="text-black font-semibold   focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-1.5 md:px-4 py-0 md:py-2 bg-yellow-400 hover:bg-yellow-500 "
                         >
                           Cari
                         </button>
@@ -178,7 +194,7 @@ export default function ListingPage() {
                       Search
                     </label>
                     <div className="relative flex items-center w-full">
-                      <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                      <div className="hidden md:absolute md:inset-y-0 md:start-0 md:flex md:items-center md:ps-3 md:pointer-events-none">
                         <svg
                           className="w-6 h-6 text-gray-500 dark:text-black"
                           aria-hidden="true"
@@ -198,18 +214,18 @@ export default function ListingPage() {
                       <input
                         type="search"
                         id="default-search"
-                        className="block w-full p-6 pl-14 text-md text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-amber-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="block w-full p-3 md:p-6 pl-1 md:pl-14 text-sm md:text-md rounded-lg md:rounded-none text-gray-900 border border-gray-300 bg-gray-50 f dark:bg-amber-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
                         placeholder="Rumah Dijual Jakarta"
                         required
                       />
                       <div className="flex items-center absolute right-0 pr-4  space-x-2">
-                        <button className="bg-gray-100 text-black py-2 px-5 rounded-l-lg hover:bg-gray-200 flex items-center">
+                        <button className="bg-gray-100 text-black py-0 md:py-2 px-1 md:px-5 rounded-l-lg hover:bg-gray-200 flex items-center">
                           <span className="font-semibold text-sm">Filter</span>
                           <Settings2 className="ml-2 text-sm" size={14} />
                         </button>
                         <button
                           type="submit"
-                          className="text-black font-semibold bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-4 py-2 dark:bg-yellow-400 dark:hover:bg-yellow-500 dark:focus:ring-blue-800"
+                          className="text-black font-semibold   focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-1.5 md:px-4 py-0 md:py-2 bg-yellow-400 hover:bg-yellow-500 "
                         >
                           Cari
                         </button>
@@ -229,7 +245,7 @@ export default function ListingPage() {
                       Search
                     </label>
                     <div className="relative flex items-center w-full">
-                      <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                      <div className="hidden md:absolute md:inset-y-0 md:start-0 md:flex md:items-center md:ps-3 md:pointer-events-none">
                         <svg
                           className="w-6 h-6 text-gray-500 dark:text-black"
                           aria-hidden="true"
@@ -249,18 +265,18 @@ export default function ListingPage() {
                       <input
                         type="search"
                         id="default-search"
-                        className="block w-full p-6 pl-14 text-md text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-amber-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="block w-full p-3 md:p-6 pl-1 md:pl-14 text-sm md:text-md rounded-lg md:rounded-none text-gray-900 border border-gray-300 bg-gray-50 f dark:bg-amber-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
                         placeholder="Rumah Disewa Jakarta"
                         required
                       />
                       <div className="flex items-center absolute right-0 pr-4  space-x-2">
-                        <button className="bg-gray-100 text-black py-2 px-5 rounded-l-lg hover:bg-gray-200 flex items-center">
+                        <button className="bg-gray-100 text-black py-0 md:py-2 px-1 md:px-5 rounded-l-lg hover:bg-gray-200 flex items-center">
                           <span className="font-semibold text-sm">Filter</span>
                           <Settings2 className="ml-2 text-sm" size={14} />
                         </button>
                         <button
                           type="submit"
-                          className="text-black font-semibold bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-4 py-2 dark:bg-yellow-400 dark:hover:bg-yellow-500 dark:focus:ring-blue-800"
+                          className="text-black font-semibold   focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-1.5 md:px-4 py-0 md:py-2 bg-yellow-400 hover:bg-yellow-500 "
                         >
                           Cari
                         </button>
@@ -291,8 +307,8 @@ export default function ListingPage() {
               </div>
             </div>
 
-            {/* Right Side: Image with gradient */}
-            <div className="w-full md:w-1/2 flex items-center justify-center md:justify-end mb-6 md:mt-2">
+            {/* Right Side Webview: Image  */}
+            <div className="hidden md:w-1/2 md:flex md:justify-end md:mt-2">
               <div className="relative w-full h-80 md:h-auto">
                 <Image
                   src="https://raw.githubusercontent.com/Bimbim15/lolhuman/921fbd56bbfceb893809fda8f1596649351e9417/css/Screenshot%20From%202025-06-06%2017-22-26.png"
@@ -308,6 +324,70 @@ export default function ListingPage() {
           </div>
         </div>
       </div>
+
+      {/* Why Choose Us Section (No Gradient) */}
+      <section className="container mx-auto px-6 mt-35">
+        <h1 className="text-3xl md:text-4xl font-semibold text-center mb-8">
+          Bagaimana Caranya Temukan Properti Impianmu?
+        </h1>
+        <p className="text-md md:text-xl text-center mt-3">
+          3 Langkah Menuju Properti Impianmu
+        </p>
+        <div className="mt-15 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="p-6 rounded-lg flex flex-col text-center items-center">
+            <div className="bg-yellow-500 px-3 p-3 items-center justify-center">
+              <Image
+                src="https://raw.githubusercontent.com/Bimbim15/lolhuman/bb07fca4b93b0832af25e7ea818322aa3903e8d7/css/Vector%20(3).svg"
+                alt="Step 1"
+                width={50}
+                height={50}
+                className=""
+              />
+            </div>
+            <h2 className="text-lg md:text-xl font-semibold mt-4">
+              Pilih Properti
+            </h2>
+            <p className="text-sm md:text-md mt-2 px-20">
+              Ribuan properti terbaik yang telah melalui proses verifikasi
+              Prop2Go API
+            </p>
+          </div>
+          <div className="p-6 rounded-lg flex flex-col text-center items-center">
+            <div className="bg-yellow-500 px-3 p-3 items-center justify-center">
+              <Image
+                src="https://raw.githubusercontent.com/Bimbim15/lolhuman/bb07fca4b93b0832af25e7ea818322aa3903e8d7/css/Vector%20(2).svg"
+                alt="Step 1"
+                width={50}
+                height={50}
+                className=""
+              />
+            </div>
+            <h2 className="text-lg md:text-xl font-semibold mt-4">
+              Hubungi Kami
+            </h2>
+            <p className="text-sm md:text-md mt-2 px-20">
+              Tim profesional dan berpengalaman tinggi siap membantu anda
+            </p>
+          </div>
+          <div className="p-6 rounded-lg flex flex-col text-center items-center">
+            <div className="bg-yellow-500 px-3 p-3 items-center justify-center">
+              <Image
+                src="https://raw.githubusercontent.com/Bimbim15/lolhuman/bb07fca4b93b0832af25e7ea818322aa3903e8d7/css/Vector%20(1).svg"
+                alt="Step 1"
+                width={50}
+                height={10}
+                className=""
+              />
+            </div>
+            <h2 className="text-lg md:text-xl font-semibold mt-4">
+              Terima Kunci
+            </h2>
+            <p className="text-sm md:text-md mt-2 px-20">
+              Survey, Deal, Terima Kunci. Kami memberikan segala kemudahannya
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

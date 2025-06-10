@@ -109,6 +109,16 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       .on("reInit", tweenOpacity)
       .on("scroll", tweenOpacity)
       .on("slideFocus", tweenOpacity);
+
+    // Tambahkan setInterval untuk mengubah slide otomatis setiap 5 detik
+    const interval = setInterval(() => {
+      if (emblaApi) {
+        emblaApi.scrollNext(); // Menggeser ke slide berikutnya
+      }
+    }, 5000); // Ganti slide setiap 5000 ms (5 detik)
+
+    // Bersihkan interval saat komponen di-unmount
+    return () => clearInterval(interval);
   }, [emblaApi, setTweenFactor, tweenOpacity]);
 
   return (
