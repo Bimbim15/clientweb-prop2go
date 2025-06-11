@@ -33,8 +33,52 @@ const testimonials = [
   },
 ];
 
+const iframeVideos = [
+  {
+    title: "Video 1",
+    url: "https://www.youtube.com/embed/hORK5DqiqJs?si=BK5AxPkpmwqdQPIF",
+  },
+  {
+    title: "Video 2",
+    url: "https://www.youtube.com/embed/RHO6w4v5pHA?si=yeQLC2QEEJZ31Ynt",
+  },
+  {
+    title: "Video 3",
+    url: "https://www.youtube.com/embed/QRmIbTw973U?si=a7jQHwhbQ16Ermj4",
+  },
+  {
+    title: "Video 4",
+    url: "https://www.youtube.com/embed/khoME04hpZo?si=jJgwG7lyS88jOUCh",
+  },
+  {
+    title: "Video 5",
+    url: "https://www.youtube.com/embed/cdbsRosg9B4?si=yG9a9hq6iBc6bacp",
+  },
+  {
+    title: "Video 6",
+    url: "https://www.youtube.com/embed/7nlUVivVIYs?si=7zJVL_yiJ-VKgpaM",
+  },
+  {
+    title: "Video 7",
+    url: "https://www.youtube.com/embed/MELBqItLZOk?si=8ienQYuyMH0L-TaG",
+  },
+];
+
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+  const handlePrevYt = () => {
+    setCurrentVideoIndex((prev) =>
+      prev === 0 ? iframeVideos.length - 1 : prev - 1
+    );
+  };
+
+  const handleNextYt = () => {
+    setCurrentVideoIndex((prev) =>
+      prev === iframeVideos.length - 1 ? 0 : prev + 1
+    );
+  };
 
   const handlePrev = () => {
     setCurrentIndex((prev) =>
@@ -174,7 +218,7 @@ export default function Home() {
               </div>
             </div>
             <p className="text-lg ">{testimonials[currentIndex].description}</p>
-            <div className="flex space-x-4 mt-0 justify-start">
+            <div className="flex space-x-4 mt-2 justify-start">
               <Button
                 onClick={handlePrev}
                 className="w-16 h-8 bg-transparent border-1 border-black dark:border-white text-black dark:text-white rounded-xl flex items-center justify-center"
@@ -212,27 +256,43 @@ export default function Home() {
               />
               <div>
                 <h3 className="text-xl font-semibold">Prop2Go API</h3>
-                <p className="text-sm ">Podcast</p>
+                <p className="text-sm">Podcast</p>
               </div>
             </div>
-            <p className="text-lg ">
-              Ikuti dan tonton terus chanel Youtube kami dalam rangka memberikan
-              edukasi tentang properti Lelang, Cessie, dan bagaimana cara
-              mendapatkan keuntungan maksimal
+            <p className="text-lg">
+              Ikuti dan tonton terus channel Youtube kami dalam rangka
+              memberikan edukasi tentang properti Lelang, Cessie, dan bagaimana
+              cara mendapatkan keuntungan maksimal.
             </p>
           </div>
           {/* Right Side: Youtube Video */}
-          <div className="md:w-1/2 flex items-center justify-center mt-6 md:mt-0">
+          <div className="md:w-1/2 flex flex-col items-center justify-center mt-0 md:mt-0">
             <iframe
-              width="560"
+              width="100%" // Full width of the container
               height="315"
-              src="https://www.youtube.com/embed/khoME04hpZo?si=6dhH9pthKF8wV8FG"
+              src={iframeVideos[currentVideoIndex].url}
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
+              className="rounded-xl" // Adding rounded corners with Tailwind
             ></iframe>
+            {/* Video Navigation */}
+            <div className="flex justify-center md:mt-4 space-x-4">
+              <Button
+                onClick={handlePrevYt}
+                className="w-16 h-8 bg-transparent border-1 border-black dark:border-white text-black dark:text-white rounded-xl flex items-center justify-center"
+              >
+                <ChevronLeftIcon className="w-5 h-5" />
+              </Button>
+              <Button
+                onClick={handleNextYt}
+                className="w-16 h-8 bg-transparent border-1 border-black dark:border-white text-black dark:text-white rounded-xl flex items-center justify-center"
+              >
+                <ChevronRightIcon className="w-5 h-5" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>
