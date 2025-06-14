@@ -5,6 +5,7 @@ import { Settings2 } from "lucide-react";
 import Image from "next/image";
 
 import { useState } from "react";
+import Nonsearch from "@/components/section/beforelogin/listingcomp/nonsearch";
 
 const lora = Lora({
   subsets: ["latin"],
@@ -14,6 +15,7 @@ const lora = Lora({
 
 export default function ListingPage() {
   const [activeTab, setActiveTab] = useState(1);
+
   return (
     <main className={`${lora.variable} font-serif min-h-screen relative`}>
       <Navbar />
@@ -325,69 +327,8 @@ export default function ListingPage() {
         </div>
       </div>
 
-      {/* Why Choose Us Section (No Gradient) */}
-      <section className="container mx-auto px-6 mt-35">
-        <h1 className="text-3xl md:text-4xl font-semibold text-center mb-8">
-          Bagaimana Caranya Temukan Properti Impianmu?
-        </h1>
-        <p className="text-md md:text-xl text-center mt-3">
-          3 Langkah Menuju Properti Impianmu
-        </p>
-        <div className="mt-15 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="p-6 rounded-lg flex flex-col text-center items-center">
-            <div className="bg-yellow-500 px-3 p-3 items-center justify-center">
-              <Image
-                src="https://raw.githubusercontent.com/Bimbim15/lolhuman/bb07fca4b93b0832af25e7ea818322aa3903e8d7/css/Vector%20(3).svg"
-                alt="Step 1"
-                width={50}
-                height={50}
-                className=""
-              />
-            </div>
-            <h2 className="text-lg md:text-xl font-semibold mt-4">
-              Pilih Properti
-            </h2>
-            <p className="text-sm md:text-md mt-2 px-20">
-              Ribuan properti terbaik yang telah melalui proses verifikasi
-              Prop2Go API
-            </p>
-          </div>
-          <div className="p-6 rounded-lg flex flex-col text-center items-center">
-            <div className="bg-yellow-500 px-3 p-3 items-center justify-center">
-              <Image
-                src="https://raw.githubusercontent.com/Bimbim15/lolhuman/bb07fca4b93b0832af25e7ea818322aa3903e8d7/css/Vector%20(2).svg"
-                alt="Step 1"
-                width={50}
-                height={50}
-                className=""
-              />
-            </div>
-            <h2 className="text-lg md:text-xl font-semibold mt-4">
-              Hubungi Kami
-            </h2>
-            <p className="text-sm md:text-md mt-2 px-20">
-              Tim profesional dan berpengalaman tinggi siap membantu anda
-            </p>
-          </div>
-          <div className="p-6 rounded-lg flex flex-col text-center items-center">
-            <div className="bg-yellow-500 px-3 p-3 items-center justify-center">
-              <Image
-                src="https://raw.githubusercontent.com/Bimbim15/lolhuman/bb07fca4b93b0832af25e7ea818322aa3903e8d7/css/Vector%20(1).svg"
-                alt="Step 1"
-                width={50}
-                height={10}
-                className=""
-              />
-            </div>
-            <h2 className="text-lg md:text-xl font-semibold mt-4">
-              Terima Kunci
-            </h2>
-            <p className="text-sm md:text-md mt-2 px-20">
-              Survey, Deal, Terima Kunci. Kami memberikan segala kemudahannya
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* No Search  Section*/}
+      <Nonsearch />
     </main>
   );
 }

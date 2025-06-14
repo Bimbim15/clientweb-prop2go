@@ -1,0 +1,419 @@
+"use client";
+import { useEffect, useState } from "react";
+
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import {
+  MapPin,
+  Bed,
+  Bath,
+  Scaling,
+  ChevronLeftIcon,
+  ChevronRight,
+} from "lucide-react";
+import { DotButton } from "@/components/ui/EmblaCarouselDotButton";
+
+const properties = [
+  {
+    id: 1,
+    title: "Apartment Pakubuwono ",
+    location: "Jakarta Selatan",
+    type: "Lelang",
+    imageUrl:
+      "https://raw.githubusercontent.com/Bimbim15/lolhuman/4619c8234c00f20db5107078d8ff15a1164c7096/css/Link%20%E2%86%92%20p13-516x360.jpg.svg",
+    beds: 4,
+    baths: 2,
+    area: 450,
+  },
+  {
+    id: 2,
+    title: "Rumah Menteng",
+    location: "Jakarta Pusat",
+    type: "Cessie",
+    imageUrl:
+      "https://raw.githubusercontent.com/Bimbim15/lolhuman/4619c8234c00f20db5107078d8ff15a1164c7096/css/Link%20%E2%86%92%20p15-516x360.jpg.svg",
+    beds: 4,
+    baths: 2,
+    area: 400,
+  },
+  {
+    id: 3,
+    title: "Apartment Penthouse",
+    location: "Bali",
+    type: "Dijual",
+    imageUrl:
+      "https://raw.githubusercontent.com/Bimbim15/lolhuman/4619c8234c00f20db5107078d8ff15a1164c7096/css/Link%20%E2%86%92%20p16-516x360.jpg.svg",
+    beds: 4,
+    baths: 2,
+    area: 450,
+  },
+  {
+    id: 4,
+    title: "Apartment Bandung ",
+    location: "Bandung",
+    type: "Lelang",
+    imageUrl:
+      "https://raw.githubusercontent.com/Bimbim15/lolhuman/4619c8234c00f20db5107078d8ff15a1164c7096/css/Link%20%E2%86%92%20p13-516x360.jpg.svg",
+    beds: 4,
+    baths: 2,
+    area: 450,
+  },
+  {
+    id: 5,
+    title: "Rumah Bandung",
+    location: "Bandung Pusat",
+    type: "Cessie",
+    imageUrl:
+      "https://raw.githubusercontent.com/Bimbim15/lolhuman/4619c8234c00f20db5107078d8ff15a1164c7096/css/Link%20%E2%86%92%20p15-516x360.jpg.svg",
+    beds: 4,
+    baths: 2,
+    area: 400,
+  },
+  {
+    id: 6,
+    title: "Apartment Tasik",
+    location: "Tasik",
+    type: "Dijual",
+    imageUrl:
+      "https://raw.githubusercontent.com/Bimbim15/lolhuman/4619c8234c00f20db5107078d8ff15a1164c7096/css/Link%20%E2%86%92%20p16-516x360.jpg.svg",
+    beds: 4,
+    baths: 2,
+    area: 450,
+  },
+];
+
+export default function Nonsearch() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const cardsPerPageMobile = 1;
+  const cardsPerPageWeb = 3;
+  const [isMobile, setIsMobile] = useState(false);
+
+  const totalPages = Math.ceil(
+    properties.length / (isMobile ? cardsPerPageMobile : cardsPerPageWeb)
+  );
+  const startIndex =
+    (currentPage - 1) * (isMobile ? cardsPerPageMobile : cardsPerPageWeb);
+  const currentProperties = properties.slice(
+    startIndex,
+    startIndex + (isMobile ? cardsPerPageMobile : cardsPerPageWeb)
+  );
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
+  // Handle pagination navigation
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  // Handle dot click
+  const handleDotClick = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  // Automatic page transition every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPage((prevPage) => {
+        if (prevPage < totalPages) return prevPage + 1;
+        return 1; // Go back to the first page after reaching the last one
+      });
+    }, 5000); // 5 seconds
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval);
+  }, [totalPages]);
+
+  return (
+    <div>
+      <section className="container mx-auto mt-35">
+        {/* How to search your dream property */}
+        <div className="px-6">
+          <h1 className="text-3xl md:text-4xl font-semibold text-center mb-8">
+            Bagaimana Caranya Temukan Properti Impianmu?
+          </h1>
+          <p className="text-md md:text-xl text-center mt-3">
+            3 Langkah Menuju Properti Impianmu
+          </p>
+          <div className="mt-15 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-lg flex flex-col text-center items-center">
+              <div className="bg-yellow-500 px-3 p-3 items-center justify-center">
+                <Image
+                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/bb07fca4b93b0832af25e7ea818322aa3903e8d7/css/Vector%20(3).svg"
+                  alt="Step 1"
+                  width={50}
+                  height={50}
+                  className=""
+                />
+              </div>
+              <h2 className="text-lg md:text-xl font-semibold mt-4">
+                Pilih Properti
+              </h2>
+              <p className="text-sm md:text-md mt-2 px-20">
+                Ribuan properti terbaik yang telah melalui proses verifikasi
+                Prop2Go API
+              </p>
+            </div>
+            <div className="p-6 rounded-lg flex flex-col text-center items-center">
+              <div className="bg-yellow-500 px-3 p-3 items-center justify-center">
+                <Image
+                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/bb07fca4b93b0832af25e7ea818322aa3903e8d7/css/Vector%20(2).svg"
+                  alt="Step 1"
+                  width={50}
+                  height={50}
+                  className=""
+                />
+              </div>
+              <h2 className="text-lg md:text-xl font-semibold mt-4">
+                Hubungi Kami
+              </h2>
+              <p className="text-sm md:text-md mt-2 px-20">
+                Tim profesional dan berpengalaman tinggi siap membantu anda
+              </p>
+            </div>
+            <div className="p-6 rounded-lg flex flex-col text-center items-center">
+              <div className="bg-yellow-500 px-3 p-3 items-center justify-center">
+                <Image
+                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/bb07fca4b93b0832af25e7ea818322aa3903e8d7/css/Vector%20(1).svg"
+                  alt="Step 1"
+                  width={50}
+                  height={10}
+                  className=""
+                />
+              </div>
+              <h2 className="text-lg md:text-xl font-semibold mt-4">
+                Terima Kunci
+              </h2>
+              <p className="text-sm md:text-md mt-2 px-20">
+                Survey, Deal, Terima Kunci. Kami memberikan segala kemudahannya
+              </p>
+            </div>
+          </div>
+        </div>
+        {/* Property select */}
+        <div className="mt-15">
+          <div className="md:grid md:grid-cols-2 md:px-10">
+            <div>
+              <h1 className="text-3xl font-semibold md:text-4xl text-center md:text-start">
+                Pilihan Kategori
+              </h1>
+            </div>
+            <div className="hidden md:block">
+              <div className="flex items-center justify-center md:justify-end -mt-2 pr-2">
+                <Button
+                  onClick={() => alert("Button clicked")}
+                  className="w-36 h-12 bg-yellow-400 text-black hover:bg-yellow-500 rounded-full flex items-center justify-center"
+                >
+                  <span>Lihat Semua</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      d="M10 6l6 6-6 6"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      fill="none"
+                    />
+                  </svg>
+                </Button>
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-6 mt-10 px-5 gap-5">
+            <div
+              onClick={() => alert("Card clicked")}
+              className="bg-white shadow-2xl flex flex-col justify-center items-center text-center rounded-xl px-5 p-20"
+            >
+              <Image
+                src="https://raw.githubusercontent.com/Bimbim15/lolhuman/56b1b094ef5f65fe842b73b28764abcf55dbcfe3/css/Vector%20(5).svg"
+                alt="Gudang"
+                width={70}
+                height={70}
+                className="p-3"
+              />
+              <h2 className="text-sm md:text-md font-semibold  text-black">
+                Gudang
+              </h2>
+              <p className="text-sm md:text-md text-black">2 Properti</p>
+            </div>
+            <div
+              onClick={() => alert("Card clicked")}
+              className="bg-white shadow-2xl flex flex-col justify-center items-center text-center rounded-xl px-5 p-20"
+            >
+              <Image
+                src="https://raw.githubusercontent.com/Bimbim15/lolhuman/56b1b094ef5f65fe842b73b28764abcf55dbcfe3/css/Vector%20(6).svg"
+                alt="Villa"
+                width={70}
+                height={70}
+                className="p-3"
+              />
+              <h2 className="text-sm md:text-md font-semibold  text-black">
+                Villa
+              </h2>
+              <p className="text-sm md:text-md text-black">10 Properti</p>
+            </div>
+            <div
+              onClick={() => alert("Card clicked")}
+              className="bg-white shadow-2xl flex flex-col justify-center items-center text-center rounded-xl px-5 p-20"
+            >
+              <Image
+                src="https://raw.githubusercontent.com/Bimbim15/lolhuman/56b1b094ef5f65fe842b73b28764abcf55dbcfe3/css/Vector%20(9).svg"
+                alt="Apartment"
+                width={70}
+                height={70}
+                className="p-3"
+              />
+              <h2 className="text-sm md:text-md font-semibold  text-black">
+                Apartment
+              </h2>
+              <p className="text-sm md:text-md text-black">3 Properti</p>
+            </div>
+            <div
+              onClick={() => alert("Card clicked")}
+              className="bg-white shadow-2xl flex flex-col justify-center items-center text-center rounded-xl px-5 p-20"
+            >
+              <Image
+                src="https://raw.githubusercontent.com/Bimbim15/lolhuman/56b1b094ef5f65fe842b73b28764abcf55dbcfe3/css/Vector%20(7).svg"
+                alt="Perkantoran"
+                width={70}
+                height={70}
+                className="p-3"
+              />
+              <h2 className="text-sm md:text-md font-semibold  text-black">
+                Perkantoran
+              </h2>
+              <p className="text-sm md:text-md text-black">3 Properti</p>
+            </div>
+            <div
+              onClick={() => alert("Card clicked")}
+              className="bg-white shadow-2xl flex flex-col justify-center items-center text-center rounded-xl px-5 p-20"
+            >
+              <Image
+                src="https://raw.githubusercontent.com/Bimbim15/lolhuman/56b1b094ef5f65fe842b73b28764abcf55dbcfe3/css/Vector%20(10).svg"
+                alt="Rumah"
+                width={70}
+                height={70}
+                className="p-3"
+              />
+              <h2 className="text-sm md:text-md font-semibold  text-black">
+                Rumah
+              </h2>
+              <p className="text-sm md:text-md text-black">5 Properti</p>
+            </div>
+            <div
+              onClick={() => alert("Card clicked")}
+              className="bg-white shadow-2xl flex flex-col justify-center items-center text-center rounded-xl px-5 p-20"
+            >
+              <Image
+                src="https://raw.githubusercontent.com/Bimbim15/lolhuman/56b1b094ef5f65fe842b73b28764abcf55dbcfe3/css/Vector%20(8).svg"
+                alt="Ruko"
+                width={70}
+                height={70}
+                className="p-3"
+              />
+              <h2 className="text-sm md:text-md font-semibold  text-black">
+                Ruko
+              </h2>
+              <p className="text-sm md:text-md text-black">2 Properti</p>
+            </div>
+          </div>
+        </div>
+        {/* Property Week Recomend*/}
+        <div className="mt-15 px-20 p-3">
+          <div className="flex flex-col">
+            <h1 className="text-3xl font-semibold md:text-4xl text-center md:text-start">
+              Rekomendasi Investasi Properti Minggu Ini
+            </h1>
+            <p className="text-md text-center md:text-start md:text-xl mt-2">
+              Potensi Cuan Maksimal
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 transition-all duration-300 ease-in-out mt-10">
+            {currentProperties.map((property) => (
+              <div
+                key={property.id}
+                onClick={() => alert("Card clicked")}
+                className="shadow-2xl flex flex-col justify-start items-start text-start rounded-xl relative"
+              >
+                <Image
+                  src={property.imageUrl}
+                  alt="Property 1"
+                  width={400}
+                  height={300}
+                  className="rounded-xl"
+                />
+
+                <span className="absolute top-3 left-3 px-3 py-1 text-sm font-semibold text-white bg-[#1F4B43] rounded-full z-10">
+                  {property.type}
+                </span>
+
+                <h2 className="text-sm md:text-xl font-semibold px-1 dark:px-0">
+                  {property.title}
+                </h2>
+                <div className="flex gap-2 mt-1 px-1 dark:px-0">
+                  <MapPin size={20} />
+                  <p className="text-sm md:text-md">{property.location}</p>
+                </div>
+
+                {/* Garis horizontal */}
+                <div className="border-t-1 border-gray-500 my-3 w-full"></div>
+
+                {/* Item berjajar dengan garis vertikal sebagai pemisah */}
+                <div className="flex w-full justify-between">
+                  <div className="flex items-center gap-3 justify-center w-1/3">
+                    <Bed size={22} />
+                    <p className="font-semibold">{property.beds}</p>
+                  </div>
+                  <div className="border-l-1 border-gray-500 h-10"></div>
+                  <div className="flex justify-center gap-3 items-center w-1/3">
+                    <Bath size={22} />
+                    <p className="font-semibold">{property.baths}</p>
+                  </div>
+                  <div className="border-l-1 border-gray-500 h-10"></div>
+                  <div className="flex justify-center gap-3 items-center w-1/3">
+                    <Scaling size={22} />
+                    <p className="font-semibold">{property.area}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Pagination with Chevron Icons and Dot Buttons */}
+          <div className="flex justify-center items-center mt-6">
+            <ChevronLeftIcon
+              className="cursor-pointer"
+              onClick={handlePrev}
+              size={24}
+            />
+            {[...Array(totalPages)].map((_, index) => (
+              <DotButton
+                key={index}
+                onClick={() => handleDotClick(index + 1)}
+                className={`cursor-pointer ${
+                  currentPage === index + 1 ? "bg-yellow-500" : "bg-gray-300"
+                } w-2.5 h-2.5 rounded-full gap-2 mx-1`}
+              />
+            ))}
+
+            <ChevronRight
+              className="cursor-pointer"
+              onClick={handleNext}
+              size={24}
+            />
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
