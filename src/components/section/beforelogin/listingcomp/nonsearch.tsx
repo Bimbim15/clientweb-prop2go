@@ -13,6 +13,44 @@ import {
 } from "lucide-react";
 import { DotButton } from "@/components/ui/EmblaCarouselDotButton";
 
+const cities = [
+  {
+    name: "Jakarta",
+    properties: 1000,
+    imageUrl:
+      "https://raw.githubusercontent.com/Bimbim15/lolhuman/018590a66de321dbb34df4a8376a1a5738f609a0/css/h61.jpg.svg",
+    large: true, // Flag untuk Jakarta agar lebih besar
+  },
+  {
+    name: "Bandung",
+    properties: 200,
+    imageUrl:
+      "https://raw.githubusercontent.com/Bimbim15/lolhuman/018590a66de321dbb34df4a8376a1a5738f609a0/css/h62.jpg.svg",
+    large: false,
+  },
+  {
+    name: "Surabaya",
+    properties: 79,
+    imageUrl:
+      "https://raw.githubusercontent.com/Bimbim15/lolhuman/018590a66de321dbb34df4a8376a1a5738f609a0/css/h63.jpg.svg",
+    large: false,
+  },
+  {
+    name: "Palembang",
+    properties: 20,
+    imageUrl:
+      "https://raw.githubusercontent.com/Bimbim15/lolhuman/018590a66de321dbb34df4a8376a1a5738f609a0/css/h64.jpg.svg",
+    large: false,
+  },
+  {
+    name: "Denpasar",
+    properties: 19,
+    imageUrl:
+      "https://raw.githubusercontent.com/Bimbim15/lolhuman/018590a66de321dbb34df4a8376a1a5738f609a0/css/h65.jpg.svg",
+    large: false,
+  },
+];
+
 const properties = [
   {
     id: 1,
@@ -411,6 +449,60 @@ export default function Nonsearch() {
               onClick={handleNext}
               size={24}
             />
+          </div>
+        </div>
+        {/* Property by City */}
+        <div className="container mx-auto px-6 mt-15">
+          <h2 className="text-4xl font-bold text-center md:text-start  mb-3">
+            Temukan Properti Di Kotamu
+          </h2>
+          <p className="text-lg text-center md:text-start mb-12">
+            Kami hadir di kota-kota besar di Indonesia
+          </p>
+
+          <div className="flex flex-col lg:flex-row gap-6">
+            {/* Left side: Jakarta card */}
+            <div className="relative lg:w-1/3 h-[40vh] lg:h-[130vh] group">
+              <Image
+                src={cities[0].imageUrl}
+                alt={cities[0].name}
+                width={600}
+                height={800} // height lebih tinggi agar sesuai dengan tampilan
+                className="object-cover w-full h-full rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t  group-hover:opacity-40"></div>
+              <div className="absolute bottom-4 left-0 right-0 p-3 text-start text-white z-10 backdrop-blur-md bg-white/30 rounded-lg mx-4">
+                <h3 className="text-xl font-semibold">{cities[0].name}</h3>
+                <p>{cities[0].properties} Properties</p>
+              </div>
+            </div>
+
+            {/* Right side: Other city cards */}
+            <div className="grid grid-cols-2 gap-6 lg:w-2/3">
+              {cities.slice(1).map((city, index) => (
+                <div
+                  key={index}
+                  className="relative group rounded-lg overflow-hidden"
+                >
+                  <Image
+                    src={city.imageUrl}
+                    alt={city.name}
+                    width={600}
+                    height={400}
+                    className="object-cover w-full h-full transition-transform duration-500 ease-in-out transform group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t group-hover:opacity-40"></div>
+                  <div className="absolute bottom-0.5 md:bottom-4 left-0 right-0 p-0.5 md:p-3 text-center md:text-start text-white z-10 backdrop-blur-md bg-white/30 rounded-lg mx-4">
+                    <h3 className="text-md md:text-2xl font-semibold">
+                      {city.name}
+                    </h3>
+                    <p className="text-xs md:text-lg">
+                      {city.properties} Properties
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
