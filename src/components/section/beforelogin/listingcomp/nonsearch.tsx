@@ -802,7 +802,52 @@ export default function Nonsearch() {
         </div>
         {/* Top Marketing */}
         <div className="mt-15 px-20 p-3">
-          <div className="px-6"></div>
+          <div className="px-6">
+            <h1 className="text-3xl md:text-4xl font-semibold text-center mb-8">
+              Top Marketing Kami Bulan Ini
+            </h1>
+            <p className="text-md md:text-md text-center mt-3">
+              Hubungi Kami Untuk Mendapatkan Bantuan Profesional Terbaik.
+            </p>
+            <div className="mt-10 grid grid-cols-4 gap-5">
+              <div className="group rounded-lg overflow-hidden">
+                <Image
+                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/523229f1fe86a571e7436f81284051b6e36eb86b/css/Link%20%E2%86%92%2012-330x400.jpg.png"
+                  alt="marketing1"
+                  width="400"
+                  height="600"
+                  className="object-cover w-full h-full transition-transform duration-500 ease-in-out transform group-hover:scale-110"
+                />
+              </div>
+              <div className="group rounded-lg overflow-hidden">
+                <Image
+                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/523229f1fe86a571e7436f81284051b6e36eb86b/css/Link%20%E2%86%92%208-330x400.jpg.png"
+                  alt="marketing1"
+                  width="400"
+                  height="600"
+                  className="object-cover w-full h-full transition-transform duration-500 ease-in-out transform group-hover:scale-110"
+                />
+              </div>
+              <div className="group rounded-lg overflow-hidden">
+                <Image
+                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/523229f1fe86a571e7436f81284051b6e36eb86b/css/Link%20%E2%86%92%206-330x400.jpg.png"
+                  alt="marketing1"
+                  width="400"
+                  height="600"
+                  className="object-cover w-full h-full transition-transform duration-500 ease-in-out transform group-hover:scale-110"
+                />
+              </div>
+              <div className="group rounded-lg overflow-hidden">
+                <Image
+                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/523229f1fe86a571e7436f81284051b6e36eb86b/css/Link%20%E2%86%92%20team3.jpg.png"
+                  alt="marketing1"
+                  width="400"
+                  height="600"
+                  className="object-cover w-full h-full transition-transform duration-500 ease-in-out transform group-hover:scale-110"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
