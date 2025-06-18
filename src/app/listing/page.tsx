@@ -6,6 +6,7 @@ import Image from "next/image";
 
 import { useState } from "react";
 import Nonsearch from "@/components/section/beforelogin/listingcomp/nonsearch";
+import { Footer } from "@/components/footer";
 
 const lora = Lora({
   subsets: ["latin"],
@@ -329,6 +330,7 @@ export default function ListingPage() {
 
       {/* No Search  Section*/}
       <Nonsearch />
+      <Footer />
     </main>
   );
 }

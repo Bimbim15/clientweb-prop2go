@@ -43,8 +43,6 @@ const lora = Lora({
 export default function LayananPage() {
   const [scrolling, setScrolling] = useState(false);
 
-  
-
   // Detect scroll to trigger animation
   const handleScroll = () => {
     if (window.scrollY > 50) {
@@ -138,7 +136,7 @@ export default function LayananPage() {
             >
               <div className="mb-4">
                 <img
-                  src="https://github.com/Bimbim15/lolhuman/blob/master/css/Vector%20(3).png?raw=true"
+                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/523229f1fe86a571e7436f81284051b6e36eb86b/css/Vector.png"
                   alt="Gavel Icon"
                   className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain" // Smaller size on mobile
                 />
@@ -216,7 +214,7 @@ export default function LayananPage() {
               {/* Image - Positioned Top Left, Adjusted for Mobile */}
               <div className="absolute top-4 left-4 sm:left-4 md:left-4 lg:left-4">
                 <img
-                  src="https://github.com/Bimbim15/lolhuman/blob/master/css/Vector%20(3).png?raw=true"
+                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/523229f1fe86a571e7436f81284051b6e36eb86b/css/Vector.png"
                   alt="Gavel Icon"
                   className="w-12 h-12 sm:w-14 sm:h-14 md:w-13 md:h-13 object-contain" // Smaller size on mobile
                 />

@@ -11,28 +11,6 @@ const lora = Lora({
   variable: "--font-lora",
 });
 
-const testimonials = [
-  {
-    name: "Cameron Williamson",
-    title: "Investor",
-    description:
-      "Searches for multiplexes, property comparisor estimator. Works great. Lorem ipsum dolor sit adipiscing elit, sed do eiusmod tempor incididunt dolores.",
-    avatarImage:
-      "https://github.com/Bimbim15/lolhuman/blob/master/css/test1.png.png?raw=true", // Avatar image
-    largeImage:
-      "https://github.com/Bimbim15/lolhuman/blob/master/css/h62.png?raw=true", // Large image for right side
-  },
-  {
-    name: "Asep Taylor",
-    title: "Real Estate Expert",
-    description:
-      "Real estate solutions that bring long-term value and investment returns. Expertise in maximizing ROI in property investments.",
-    avatarImage:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtsux_IqwC3gZEJZYmEoiRn3eBR6Mt9C6Gqg&s", // Avatar image
-    largeImage: "https://f4.bcbits.com/img/0008333348_10.jpg", // Large image for right side
-  },
-];
-
 const iframeVideos = [
   {
     title: "Video 1",
@@ -65,7 +43,6 @@ const iframeVideos = [
 ];
 
 export default function Home() {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
   const handlePrevYt = () => {
@@ -77,18 +54,6 @@ export default function Home() {
   const handleNextYt = () => {
     setCurrentVideoIndex((prev) =>
       prev === iframeVideos.length - 1 ? 0 : prev + 1
-    );
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? testimonials.length - 1 : prev - 1
-    );
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) =>
-      prev === testimonials.length - 1 ? 0 : prev + 1
     );
   };
 
@@ -199,50 +164,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Kata Mereka Section */}
-      <div className="container mx-auto px-6 py-8 md:px-30 md:py-15">
-        <div className="flex flex-col md:flex-row items-center md:items-start">
-          {/* Left Side: Avatar, Name, Job, Testimonial */}
-          <div className="md:w-1/2 md:px-4 flex flex-col justify-end space-y-6 md:mt-10">
-            <div className="flex items-center space-x-4 mb-6">
-              <img
-                src={testimonials[currentIndex].avatarImage}
-                alt={testimonials[currentIndex].name}
-                className="w-20 h-20 rounded-full object-cover"
-              />
-              <div>
-                <h3 className="text-xl font-semibold">
-                  {testimonials[currentIndex].name}
-                </h3>
-                <p className="text-sm ">{testimonials[currentIndex].title}</p>
-              </div>
-            </div>
-            <p className="text-lg ">{testimonials[currentIndex].description}</p>
-            <div className="flex space-x-4 mt-2 justify-start">
-              <Button
-                onClick={handlePrev}
-                className="w-16 h-8 bg-transparent border-1 border-black dark:border-white text-black dark:text-white rounded-xl flex items-center justify-center"
-              >
-                <ChevronLeftIcon className="w-5 h-5" />
-              </Button>
-              <Button
-                onClick={handleNext}
-                className="w-16 h-8 bg-transparent border-1 border-black dark:border-white text-black dark:text-white rounded-xl flex items-center justify-center"
-              >
-                <ChevronRightIcon className="w-5 h-5" />
-              </Button>
-            </div>
-          </div>
-          {/* Right Side: Full Image */}
-          <div className="md:w-1/2 flex items-center justify-center mt-6 md:mt-0">
-            <img
-              src={testimonials[currentIndex].largeImage}
-              alt={testimonials[currentIndex].name}
-              className="w-full md:w-3/4 h-auto object-cover rounded-xl"
-            />
-          </div>
-        </div>
-      </div>
       {/* Youtube Content section */}
       <div className="container mx-auto px-6 py-8 md:px-30 md:py-15">
         <div className="flex flex-col md:flex-row items-center md:items-start">
