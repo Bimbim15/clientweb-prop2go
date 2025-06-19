@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-
+import { getTopMarketing } from "../../../../../services/marketing";
+import { getCountProperty } from "../../../../../services/listing";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,68 +20,61 @@ const propertyCategories = [
     name: "Gudang",
     imageUrl:
       "https://raw.githubusercontent.com/Bimbim15/lolhuman/56b1b094ef5f65fe842b73b28764abcf55dbcfe3/css/Vector%20(5).svg",
-    count: 2,
+    apiName: "gudang",
   },
   {
     name: "Ruko",
     imageUrl:
       "https://raw.githubusercontent.com/Bimbim15/lolhuman/56b1b094ef5f65fe842b73b28764abcf55dbcfe3/css/Vector%20(8).svg", // Example image URL for Ruko
-    count: 10,
+    apiName: "ruko",
   },
   {
     name: "Apartment",
     imageUrl:
       "https://raw.githubusercontent.com/Bimbim15/lolhuman/56b1b094ef5f65fe842b73b28764abcf55dbcfe3/css/Vector%20(9).svg",
-    count: 3,
+    apiName: "apart",
   },
   {
     name: "Perkantoran",
     imageUrl:
       "https://raw.githubusercontent.com/Bimbim15/lolhuman/56b1b094ef5f65fe842b73b28764abcf55dbcfe3/css/Vector%20(7).svg",
-    count: 3,
+    apiName: "kantor",
   },
   {
     name: "Rumah",
     imageUrl:
       "https://raw.githubusercontent.com/Bimbim15/lolhuman/56b1b094ef5f65fe842b73b28764abcf55dbcfe3/css/Vector%20(10).svg",
-    count: 5,
+    apiName: "rumah",
   },
   {
     name: "Hotel",
     imageUrl:
       "https://raw.githubusercontent.com/Bimbim15/lolhuman/56b1b094ef5f65fe842b73b28764abcf55dbcfe3/css/Vector%20(9).svg", // Example image URL
-    count: 4,
+    apiName: "hotel",
   },
   {
     name: "Ex Pabrik",
     imageUrl:
       "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWZhY3RvcnktaWNvbiBsdWNpZGUtZmFjdG9yeSI+PHBhdGggZD0iTTEyIDE2aC4wMSIvPjxwYXRoIGQ9Ik0xNiAxNmguMDEiLz48cGF0aCBkPSJNMyAxOWEyIDIgMCAwIDAgMiAyaDE0YTIgMiAwIDAgMCAyLTJWOC41YS41LjUgMCAwIDAtLjc2OS0uNDIybC00LjQ2MiAyLjg0NEEuNS41IDAgMCAxIDE1IDEwLjV2LTJhLjUuNSAwIDAgMC0uNzY5LS40MjJMOS43NyAxMC45MjJBLjUuNSAwIDAgMSA5IDEwLjVWNWEyIDIgMCAwIDAtMi0ySDVhMiAyIDAgMCAwLTIgMnoiLz48cGF0aCBkPSJNOCAxNmguMDEiLz48L3N2Zz4=", // Example image URL
-    count: 6,
+    apiName: "pabrik",
   },
   {
     name: "Tanah/Kavling",
     imageUrl:
       "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNjYWxpbmctaWNvbiBsdWNpZGUtc2NhbGluZyI+PHBhdGggZD0iTTEyIDNINWEyIDIgMCAwIDAtMiAydjE0YTIgMiAwIDAgMCAyIDJoMTRhMiAyIDAgMCAwIDItMnYtNyIvPjxwYXRoIGQ9Ik0xNCAxNUg5di01Ii8+PHBhdGggZD0iTTE2IDNoNXY1Ii8+PHBhdGggZD0iTTIxIDMgOSAxNSIvPjwvc3ZnPg==", // Example image URL
-    count: 8,
+    apiName: "tanah",
   },
   {
     name: "Kostan",
     imageUrl:
       "https://raw.githubusercontent.com/Bimbim15/lolhuman/56b1b094ef5f65fe842b73b28764abcf55dbcfe3/css/Vector%20(6).svg", // Example image URL
-    count: 2,
+    apiName: "kosan",
   },
   {
     name: "Office Space",
     imageUrl:
       "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJ1aWxkaW5nMi1pY29uIGx1Y2lkZS1idWlsZGluZy0yIj48cGF0aCBkPSJNNiAyMlY0YTIgMiAwIDAgMSAyLTJoOGEyIDIgMCAwIDEgMiAydjE4WiIvPjxwYXRoIGQ9Ik02IDEySDRhMiAyIDAgMCAwLTIgMnY2YTIgMiAwIDAgMCAyIDJoMiIvPjxwYXRoIGQ9Ik0xOCA5aDJhMiAyIDAgMCAxIDIgMnY5YTIgMiAwIDAgMS0yIDJoLTIiLz48cGF0aCBkPSJNMTAgNmg0Ii8+PHBhdGggZD0iTTEwIDEwaDQiLz48cGF0aCBkPSJNMTAgMTRoNCIvPjxwYXRoIGQ9Ik0xMCAxOGg0Ii8+PC9zdmc+", // Example image URL
-    count: 7,
-  },
-
-  {
-    name: "Villa",
-    imageUrl:
-      "https://raw.githubusercontent.com/Bimbim15/lolhuman/56b1b094ef5f65fe842b73b28764abcf55dbcfe3/css/Vector%20(6).svg",
-    count: 10,
+    apiName: "office",
   },
 ];
 
@@ -309,18 +303,105 @@ export default function Nonsearch() {
   const cardsPerPageMobile = 1;
   const cardsPerPageWeb = 3;
   const [isMobile, setIsMobile] = useState(false);
+  const [propertyCount, setPropertyCount] = useState(null);
+  const [currentPageMobile, setCurrentPageMobile] = useState(1);
+  const [currentPageWeb, setCurrentPageWeb] = useState(1);
+
+  type Marketing = {
+    _id: string;
+    profile: string;
+    firstName: string;
+    lastName: string;
+    totalRevenue: number;
+    totalSales: number;
+  };
+
+  const [topMarketing, setTopMarketing] = useState<Marketing[]>([]);
+
+  useEffect(() => {
+    const fetchPropertyCount = async () => {
+      const result = await getCountProperty();
+      if (result.success) {
+        setPropertyCount(result.data.data);
+      } else {
+        console.error("Failed to fetch property count:", result.error);
+      }
+    };
+
+    fetchPropertyCount();
+  }, []);
+
+  // Merge API data (count) with propertyCategories
+  const updatedCategories = propertyCategories.map((category) => {
+    // Get the count for the category from the API response
+    const apiCount = propertyCount ? propertyCount[category.apiName] : 0;
+
+    return {
+      ...category,
+      count: apiCount,
+    };
+  });
+
+  useEffect(() => {
+    const fetchTopMarketingData = async () => {
+      const result = await getTopMarketing();
+      if (result.success) {
+        setTopMarketing(result.data.data);
+      } else {
+      }
+    };
+
+    fetchTopMarketingData();
+  }, []);
 
   // Pagination for Property Categories
-  const cardsPerPageCategoriesMobile = 2;
+  const cardsPerPageCategoriesMobile = 1;
   const cardsPerPageCategoriesWeb = 6;
 
-  const startIndexCategories =
-    (currentPage - 1) *
-    (isMobile ? cardsPerPageCategoriesMobile : cardsPerPageCategoriesWeb);
-  const currentCategories = propertyCategories.slice(
-    startIndexCategories,
-    startIndexCategories +
-      (isMobile ? cardsPerPageCategoriesMobile : cardsPerPageCategoriesWeb)
+  const totalPagesCategoriesMobile = Math.ceil(
+    updatedCategories.length / cardsPerPageCategoriesMobile
+  );
+  const totalPagesCategoriesWeb = Math.ceil(
+    updatedCategories.length / cardsPerPageCategoriesWeb
+  );
+
+  const handleNextMobile = () => {
+    if (currentPageMobile < totalPagesCategoriesMobile) {
+      setCurrentPageMobile(currentPageMobile + 1);
+    }
+  };
+
+  const handlePrevMobile = () => {
+    if (currentPageMobile > 1) {
+      setCurrentPageMobile(currentPageMobile - 1);
+    }
+  };
+
+  const handleNextWeb = () => {
+    if (currentPageWeb < totalPagesCategoriesWeb) {
+      setCurrentPageWeb(currentPageWeb + 1);
+    }
+  };
+
+  const handlePrevWeb = () => {
+    if (currentPageWeb > 1) {
+      setCurrentPageWeb(currentPageWeb - 1);
+    }
+  };
+
+  // Update cards to display based on pagination
+  const startIndexCategoriesMobile =
+    (currentPageMobile - 1) * cardsPerPageCategoriesMobile;
+  const startIndexCategoriesWeb =
+    (currentPageWeb - 1) * cardsPerPageCategoriesWeb;
+
+  const currentCategoriesMobile = updatedCategories.slice(
+    startIndexCategoriesMobile,
+    startIndexCategoriesMobile + cardsPerPageCategoriesMobile
+  );
+  const currentCategoriesWeb = updatedCategories.slice(
+    startIndexCategoriesWeb,
+    startIndexCategoriesWeb + cardsPerPageCategoriesWeb
   );
 
   // Pagination for Property Week Recommend
@@ -494,50 +575,84 @@ export default function Nonsearch() {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-6 mt-10 px-5 gap-5">
-            {currentCategories.map((category, index) => (
-              <div
-                key={index}
-                onClick={() => alert("Card clicked")}
-                className="bg-white shadow-2xl flex flex-col justify-center items-center text-center rounded-xl px-5 p-20"
-              >
-                <Image
-                  src={category.imageUrl}
-                  alt={category.name}
-                  width={70}
-                  height={70}
-                  className="p-3"
-                />
-                <h2 className="text-sm md:text-md font-semibold text-black">
-                  {category.name}
-                </h2>
-                <p className="text-sm md:text-md text-black">
-                  {category.count} Properti
-                </p>
-              </div>
-            ))}
+            {(isMobile ? currentCategoriesMobile : currentCategoriesWeb).map(
+              (category) => (
+                <div
+                  key={category.name}
+                  onClick={() => alert(`${category.name} clicked`)}
+                  className="bg-white shadow-2xl flex flex-col justify-center items-center text-center rounded-xl px-5 p-20"
+                >
+                  <img
+                    src={category.imageUrl}
+                    alt={category.name}
+                    width={70}
+                    height={70}
+                    className="p-3"
+                  />
+                  <h2 className="text-sm md:text-md font-semibold text-black">
+                    {category.name}
+                  </h2>
+                  <p className="text-sm md:text-md text-black">
+                    {category.count} Properti
+                  </p>
+                </div>
+              )
+            )}
           </div>
-          {/* Pagination with Chevron Icons and Dot Buttons */}
-          <div className="flex justify-center items-center mt-6">
-            <ChevronLeftIcon
-              className="cursor-pointer"
-              onClick={handlePrev}
-              size={24}
-            />
-            {[...Array(totalPages)].map((_, index) => (
-              <DotButton
-                key={index}
-                onClick={() => handleDotClick(index + 1)}
-                className={`cursor-pointer ${
-                  currentPage === index + 1 ? "bg-yellow-500" : "bg-gray-300"
-                } w-2.5 h-2.5 rounded-full gap-2 mx-1`}
+
+          {/* Pagination for Mobile */}
+          {isMobile && (
+            <div className="flex justify-center items-center mt-6">
+              <ChevronLeftIcon
+                className="cursor-pointer"
+                onClick={handlePrevMobile}
+                size={24}
               />
-            ))}
-            <ChevronRight
-              className="cursor-pointer"
-              onClick={handleNext}
-              size={24}
-            />
-          </div>
+              {[...Array(totalPagesCategoriesMobile)].map((_, index) => (
+                <DotButton
+                  key={index}
+                  onClick={() => setCurrentPageMobile(index + 1)}
+                  className={`cursor-pointer ${
+                    currentPageMobile === index + 1
+                      ? "bg-yellow-500"
+                      : "bg-gray-300"
+                  } w-2.5 h-2.5 rounded-full gap-2 mx-1`}
+                />
+              ))}
+              <ChevronRight
+                className="cursor-pointer"
+                onClick={handleNextMobile}
+                size={24}
+              />
+            </div>
+          )}
+
+          {/* Pagination for Web */}
+          {!isMobile && (
+            <div className="flex justify-center items-center mt-6">
+              <ChevronLeftIcon
+                className="cursor-pointer"
+                onClick={handlePrevWeb}
+                size={24}
+              />
+              {[...Array(totalPagesCategoriesWeb)].map((_, index) => (
+                <DotButton
+                  key={index}
+                  onClick={() => setCurrentPageWeb(index + 1)}
+                  className={`cursor-pointer ${
+                    currentPageWeb === index + 1
+                      ? "bg-yellow-500"
+                      : "bg-gray-300"
+                  } w-2.5 h-2.5 rounded-full gap-2 mx-1`}
+                />
+              ))}
+              <ChevronRight
+                className="cursor-pointer"
+                onClick={handleNextWeb}
+                size={24}
+              />
+            </div>
+          )}
         </div>
         {/* Property Week Recomend*/}
         <div className="mt-15 px-20 p-3">
@@ -809,43 +924,28 @@ export default function Nonsearch() {
             <p className="text-md md:text-md text-center mt-3">
               Hubungi Kami Untuk Mendapatkan Bantuan Profesional Terbaik.
             </p>
-            <div className="mt-10 grid grid-cols-4 gap-5">
-              <div className="group rounded-lg overflow-hidden">
-                <Image
-                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/523229f1fe86a571e7436f81284051b6e36eb86b/css/Link%20%E2%86%92%2012-330x400.jpg.png"
-                  alt="marketing1"
-                  width="400"
-                  height="600"
-                  className="object-cover w-full h-full transition-transform duration-500 ease-in-out transform group-hover:scale-110"
-                />
-              </div>
-              <div className="group rounded-lg overflow-hidden">
-                <Image
-                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/523229f1fe86a571e7436f81284051b6e36eb86b/css/Link%20%E2%86%92%208-330x400.jpg.png"
-                  alt="marketing1"
-                  width="400"
-                  height="600"
-                  className="object-cover w-full h-full transition-transform duration-500 ease-in-out transform group-hover:scale-110"
-                />
-              </div>
-              <div className="group rounded-lg overflow-hidden">
-                <Image
-                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/523229f1fe86a571e7436f81284051b6e36eb86b/css/Link%20%E2%86%92%206-330x400.jpg.png"
-                  alt="marketing1"
-                  width="400"
-                  height="600"
-                  className="object-cover w-full h-full transition-transform duration-500 ease-in-out transform group-hover:scale-110"
-                />
-              </div>
-              <div className="group rounded-lg overflow-hidden">
-                <Image
-                  src="https://raw.githubusercontent.com/Bimbim15/lolhuman/523229f1fe86a571e7436f81284051b6e36eb86b/css/Link%20%E2%86%92%20team3.jpg.png"
-                  alt="marketing1"
-                  width="400"
-                  height="600"
-                  className="object-cover w-full h-full transition-transform duration-500 ease-in-out transform group-hover:scale-110"
-                />
-              </div>
+            <div className="mt-10 grid grid-cols-5 gap-5">
+              {topMarketing.map((marketing) => (
+                <>
+                  <div className="flex flex-col">
+                    <div
+                      key={marketing._id}
+                      className="group rounded-lg overflow-hidden"
+                    >
+                      <Image
+                        src={marketing.profile}
+                        alt={`${marketing.firstName} ${marketing.lastName}`}
+                        width="400"
+                        height="600"
+                        className="object-cover w-full h-full transition-transform duration-500 ease-in-out transform group-hover:scale-110"
+                      />
+                    </div>
+                    <div className="  text-center">
+                      <h2 className="font-semibold">{`${marketing.firstName} ${marketing.lastName}`}</h2>
+                    </div>
+                  </div>
+                </>
+              ))}
             </div>
           </div>
         </div>

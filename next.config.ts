@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+import dotenv from "dotenv";
+dotenv.config();
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -9,8 +11,14 @@ const nextConfig = {
         pathname: "/Bimbim15/lolhuman/**",
       },
     ],
-    domains: ["randomuser.me", 'github.com']
+    domains: ["randomuser.me", "github.com", "srv.prop2goapi.co.id"],
+  },
+  env: {
+    API_URL: process.env.API_URL,
+    API_URL_DOWN: process.env.API_URL_DOWN,
+    SOCKET_URI: process.env.SOCKET_URI,
+    PROV_KOTA: process.env.PROV_KOTA,
   },
 };
 
-export default nextConfig
+export default nextConfig;
